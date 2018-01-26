@@ -4,7 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-// axios imports
+// v-model imports
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
@@ -19,16 +19,19 @@ import * as VueGoogleMaps from 'vue2-google-maps'
 // boostrap use
 Vue.use(BootstrapVue)
 
-// axios use
+// v-model config
+axios.defaults.baseURL = process.env.API_URL
 Vue.use(VueAxios, axios)
 
 // gmaps
 Vue.use(VueGoogleMaps, {
   load: {
-    key: 'AIzaSyA9NhBPMAbAkRR0_-yiO32gQr_vKUGqnsE',
+    key: process.env.GMAP_API_KEY,
     libraries: 'places,drawing,visualization'
   }
 })
+
+console.log(process.env)
 
 Vue.config.productionTip = false
 

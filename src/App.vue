@@ -8,7 +8,6 @@
     </div>
     <div class="row">
       <div class="col"> © 2018 IR </div>
-      <div class="col"> <router-link to='/'>Landing</router-link> </div>
     </div>
   </div>
 </template>
