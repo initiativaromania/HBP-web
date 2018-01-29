@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Landing from '@/components/Landing'
+import InstitutionMap from '@/components/InstitutionMap'
+import InstitutionDetails from '@/components/InstitutionDetails'
 
 Vue.use(Router)
 
@@ -8,8 +9,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Landing',
-      component: Landing
+      name: 'Home',
+      component: InstitutionMap
+    },
+    {
+      path: '/institutionDetails/:id',
+      name: 'InstitutionDetails',
+      component: InstitutionDetails
     }
   ],
   mode: 'history'

@@ -4,12 +4,14 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-// v-model imports
+// axios imports
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import {loadProgressBar} from 'axios-progress-bar'
 
 // boostrap imports
-import 'bootstrap/dist/css/bootstrap.css'
+// import 'bootstrap/dist/css/bootstrap.css'
+import './assets/app.scss'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import BootstrapVue from 'bootstrap-vue'
 
@@ -19,9 +21,10 @@ import * as VueGoogleMaps from 'vue2-google-maps'
 // boostrap use
 Vue.use(BootstrapVue)
 
-// v-model config
+// axios config
 axios.defaults.baseURL = process.env.API_URL
 Vue.use(VueAxios, axios)
+loadProgressBar()
 
 // gmaps
 Vue.use(VueGoogleMaps, {
@@ -30,8 +33,6 @@ Vue.use(VueGoogleMaps, {
     libraries: 'places,drawing,visualization'
   }
 })
-
-console.log(process.env)
 
 Vue.config.productionTip = false
 
