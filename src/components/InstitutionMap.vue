@@ -1,7 +1,6 @@
 <template>
-  <div class="landing">
     <gmap-map :center="center" :zoom="zoom" :options="{styles: styles}"
-      ref="gmap" style="width: 100%; height: 600px;">
+      ref="gmap" id="gmap">
       <gmap-cluster>
         <gmap-marker
           :key="m.InstitutiePublicaId"
@@ -20,7 +19,6 @@
           <b-link :to="{name: 'InstitutionDetails', params: {id: selected.InstitutiePublicaId}}">(detaill)</b-link>
       </gmap-info-window>
     </gmap-map>
-  </div>
 </template>
 
 <script>
@@ -121,18 +119,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+#gmap { height: 600px; width: 100%; }
 </style>
