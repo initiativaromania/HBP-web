@@ -1,0 +1,28 @@
+<svg width="118" height="168" viewBox="0 0 118 168" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>Group 5</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-5203 -1747)">
+<g id="Group 5">
+<g id="Ellipse">
+<use xlink:href="#path0_fill" transform="translate(5213.12 1753.62)" fill="#EAEAEA"/>
+</g>
+<g id="Group">
+<g id="Shape">
+<use xlink:href="#path1_fill" transform="translate(5203.67 1747.65)" fill="#500014"/>
+</g>
+<g id="ic_account_balance_black_75px">
+<use xlink:href="#path2_fill" fill="url(#pattern0)" transform="translate(5229.9 1770.4)"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<pattern id="pattern0" patternUnits="objectBoundingBox" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#image0" transform="matrix(0.0133333 0 0 0.0133333 0 0)"/>
+</pattern>
+<path id="path0_fill" d="M 100.699 50.3496C 100.699 78.157 78.157 100.699 50.3496 100.699C 22.5423 100.699 0 78.157 0 50.3496C 0 22.5423 22.5423 0 50.3496 0C 78.157 0 100.699 22.5423 100.699 50.3496Z"/>
+<path id="path1_fill" fill-rule="evenodd" d="M 58.3333 0C 26.0833 0 0 26.0605 0 58.2823C 0 101.994 58.3333 166.521 58.3333 166.521C 58.3333 166.521 116.667 101.994 116.667 58.2823C 116.667 26.0605 90.5833 0 58.3333 0ZM 57.7029 102.469C 33.384 102.469 13.647 82.7324 13.647 58.4135C 13.647 34.0946 33.384 14.3575 57.7029 14.3575C 82.0218 14.3575 101.759 34.0946 101.759 58.4135C 101.759 82.7324 82.0218 102.469 57.7029 102.469Z"/>
+<path id="path2_fill" d="M 0 0L 67.1329 0L 67.1329 67.1329L 0 67.1329L 0 0Z"/>
+<image id="image0" width="75" height="75" preserveAspectRatio="none" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAYAAAA4TnrqAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAXZJREFUeNrs2v0RwTAYx/GeM4AROoIN1ARG0BHYoBsYQU1SJmADNmCDSu76B7m+PCU0Tb7P3e/O4UI/Gk2TTCJKXBMIwPIeK1G5qhTVY6oBSQOVRvRzc3jakczsVeJQkeIKoOyZoNA+RTKTqcx8RdIHtrOA9Jq7b2iz6oDulqHq0EDqET3kSMcGlVZfvBwoo0AbGsnM2cWBbeIYUt3ANnEBqXAYyYm7gbEhDTKwtTWg9BrNN6Sf3Q1kHiOZA9vNt/NZi0DuWfWZtWKm1OOZUrDAAovqqmnLa0t4OLPAAgsssIK/GjZVqrIWvE9yNdVLZF2TcheVraCtQvCeg0r+T6w4sjdVO7fYlqSdE92Q/yywwAKLAgsssMACCywKLLDAAgsssCiwwALLvfpkwSJXOVr6fL1q07Wn8yFsS7KadOMnpxuCBRZYVK+roWQfgi8l2k/RhmVzHwLdECwKLLDAAgssBqXvA7VQ6sKpQDcECyywwKIk9RRgALgo+B0oy51MAAAAAElFTkSuQmCC"/>
+</defs>
+</svg>

@@ -1,0 +1,31 @@
+<svg width="40" height="40" viewBox="0 0 199 199" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>Group 6</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-4928 -1649)">
+<g id="Group 6">
+<g id="Ellipse">
+<use xlink:href="#path0_fill" transform="translate(4944 1665)" fill="#EAEAEA"/>
+</g>
+<g id="ic_account_balance_black_48px">
+<g id="Vector">
+<use xlink:href="#path1_fill" transform="translate(5017.49 1714.17)"/>
+</g>
+<g id="Subtract">
+<use xlink:href="#path2_fill" transform="translate(4991.57 1703.19)"/>
+</g>
+<g id="Subtract">
+<use xlink:href="#path2_fill" transform="translate(4965.64 1692.22)"/>
+</g>
+</g>
+<g id="Subtract">
+<use xlink:href="#path3_fill" transform="translate(4928 1649)" fill="#500014"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 167 83.5C 167 129.616 129.616 167 83.5 167C 37.3842 167 0 129.616 0 83.5C 0 37.3842 37.3842 0 83.5 0C 129.616 0 167 37.3842 167 83.5Z"/>
+<path id="path1_fill" d="M 7.40741 32.9268L 7.40741 58.5366L 18.5185 58.5366L 18.5185 32.9268L 7.40741 32.9268ZM 29.6296 32.9268L 29.6296 58.5366L 40.7407 58.5366L 40.7407 32.9268L 29.6296 32.9268ZM 0 76.8293L 70.3704 76.8293L 70.3704 65.8537L 0 65.8537L 0 76.8293ZM 51.8518 32.9268L 51.8518 58.5366L 62.9629 58.5366L 62.9629 32.9268L 51.8518 32.9268ZM 35.1852 0L 0 18.2927L 0 25.6098L 70.3704 25.6098L 70.3704 18.2927L 35.1852 0Z"/>
+<path id="path2_fill" fill-rule="evenodd" d="M 51.3125 8.38477L 19.6846 25.6097L 0 25.6097L 0 18.2927L 35.1851 0L 51.3125 8.38477ZM 7.40723 58.5366L 7.40723 32.9269L 18.5186 32.9269L 18.5186 58.5366L 7.40723 58.5366ZM 18.5186 76.8292L 0 76.8292L 0 65.8536L 18.5186 65.8536L 18.5186 76.8292Z"/>
+<path id="path3_fill" fill-rule="evenodd" d="M 99.5 199C 154.452 199 199 154.452 199 99.5C 199 44.5476 154.452 0 99.5 0C 44.5479 0 0 44.5476 0 99.5C 0 154.452 44.5479 199 99.5 199ZM 99.5 183C 145.616 183 183 145.616 183 99.5C 183 53.3843 145.616 16 99.5 16C 53.3843 16 16 53.3843 16 99.5C 16 145.616 53.3843 183 99.5 183Z"/>
+</defs>
+</svg>

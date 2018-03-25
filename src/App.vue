@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <b-navbar toggleable="md" type="dark" variant="dark" fixed="bottom" :sticky="false">
+    <b-navbar toggleable="md" type="dark" variant="primary" :fixed="routeIsHome?'bottom':'top'" :sticky="false">
       <b-navbar-nav class="pl-5" />
-      <b-navbar-brand :to="{name: 'Home'}"><b>Harta Banilor Publici</b></b-navbar-brand>
+      <b-navbar-brand :to="{name: 'Home'}"><img src="/static/logo_landscape.svg"
+        height="60" alt="Harta Banilor Publici"/></b-navbar-brand>
       <b-navbar-toggle target="nav_collapse" />
       <b-collapse is-nav id="nav_collapse">
         <b-navbar-nav class="ml-auto pr-5">
@@ -13,17 +14,25 @@
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
-    <b-container fluid>
-      <b-row id="main" no-gutters="true">
-        <b-col><transition name='fade'> <router-view/> </transition></b-col>
+    <b-container fluid :style="{paddingBottom: routeIsHome? '100px' : 0, paddingTop: routeIsHome ? 0 : '100px' }">
+      <b-row id="main" :no-gutters="true">
+        <b-col><router-view/></b-col>
       </b-row>
     </b-container>
+    {{ routeIsHome ? "true" : "false"}}
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data () {
+    return {
+    }
+  },
+  computed: {
+    routeIsHome: function () { return this.$router.currentRoute.name === 'Home' }
+  }
 }
 </script>
 
@@ -34,7 +43,6 @@ export default {
     padding: 0;
     height: 100%;
     top: 0; bottom: 0;
-    padding-bottom: 100px;
 }
 
 #main {

@@ -2,22 +2,34 @@
     <div id="gmapParent">
       <gmap-map :center="center" :zoom="zoom" :options="mapOptions"
         ref="gmap" id="gmap">
-        <gmap-cluster>
+        <gmap-cluster
+          :styles="
+            [{url:'/static/cluster.svg', width: 40, height: 40, textSize: 1,
+            anchorIcon: [20,20]
+            }]"
+          >
           <gmap-marker
             :key="m.InstitutiePublicaId"
             v-for="m in markers"
             :position="{lat: m.lat, lng: m.long}"
             :clickable="true"
             :draggable="false"
+            :icon="{url: '/static/pin.svg', scaledSize: {width: 28, height: 40}, anchor: {x: 14, y: 40}}"
+            :shape="{coords: [14,40, 5,28,  0,14, 4,4, 14,0, 24,4, 28,14, 23,28], type: 'poly'}"
             @click="selectMark(m)"
           />
         </gmap-cluster>
-        <gmap-info-window :position="{lat: selected.lat, lng: selected.long}" v-if="selected!==null" :opened="true" ref="infowindow">
-            <h5>{{selected.Nume}}</h5>
-            <h6>{{selected.UAT}}</h6>
-            <p>Adresă: {{ selected.Adresa }}</p>
-            <b>{{ selected.nr_achizitii }} achiziții, {{ selected.nr_licitatii }} licitații</b>
-            <b-link :to="{name: 'InstitutionDetails', params: {id: selected.InstitutiePublicaId}}">(detaill)</b-link>
+        <gmap-info-window :position="{lat: selected.lat, lng: selected.long}" v-if="selected!==null" :opened="true"
+              ref="infowindow" :options="{maxWidth: 280}">
+            <b-card :title="selected.Nume" :sub-title="selected.UAT">
+              <p class="card-text">
+              <p class="card-text">Adresă: {{ selected.Adresa }}</p>
+              <p class="card-text">
+                <b>{{ selected.nr_achizitii }} achiziții, {{ selected.nr_licitatii }} licitații</b>
+              </p>
+              <b-link :to="{name: 'InstitutionDetails', params: {id: selected.InstitutiePublicaId}}"
+                class="card-link">Detalii &raquo;</b-link>
+            </b-card>
         </gmap-info-window>
       </gmap-map>
       <div id="gmapSearch">
@@ -37,9 +49,15 @@
           <b-form-group id="vatGroup">
             <b-form-input id="vatInput" type="text" placeholder="CUI"/>
           </b-form-group>
-          <b-button type="submit" style="width: 100%;">Caută</b-button>
+          <b-button type="submit" variant="primary" style="width: 100%;">Caută</b-button>
         </b-form>
       </div>
+      <!-- <div id="gmapDebug">
+        <b-btn v-b-toggle.collapse1>Toggle</b-btn>
+        <b-collapse id="collapse1">
+          <pre>{{selected}}</pre>
+        </b-collapse>
+      </div> -->
     </div>
 </template>
 
@@ -159,6 +177,7 @@ export default {
   },
   methods: {
     selectMark (item) {
+      this.$refs.gmap.panTo({lat: item.lat, lng: item.long})
       this.axios.get(`PublicInstitutionSummary/${item.InstitutiePublicaId}`)
         .then(response => {
           this.selected = {...item, ...response.data[0]}
@@ -180,10 +199,24 @@ export default {
 #gmapParent { height: 100%; width: 100%; position: relative; }
 #gmap { width: 100%; height: 100%; }
 #gmapSearch {
-  width: 300px;
+  width: 260px;
   position: absolute;
   top: 10%; left: 10%;
   background-color: rgba(255, 255, 255, 0.8);
   padding: 10px;
+}
+
+#gmapDebug {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+}
+
+#gmapWindow {
+  width: 350px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 0;
 }
 </style>

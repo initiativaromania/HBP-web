@@ -7,12 +7,15 @@ $enable-rounded: false;
 $input-placeholder-color: lightgray;
 $input-border-color: black;
 
-$sitecolor: lighten(#500014, 5%);
+$sitecolor: #500014;
 
 // theme colors
 $primary: $sitecolor;
-$secondary: lighten($sitecolor, 10%);
-$dark: darken($sitecolor, 5%);
+$secondary: #505050;
+$success: #548545;
+$danger: #f44336;
+$warning: #d1750d;
+$info: #21212d;
 
 @import "~bootstrap/scss/bootstrap.scss";
 
