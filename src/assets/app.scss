@@ -1,8 +1,19 @@
 // examples:
 // $primary: #ffa600;
 // 
-$enable-shadows: true;
-$enable-gradients: true;
+$enable-shadows: false;
+$enable-gradients: false;
 $enable-rounded: false;
+$input-placeholder-color: lightgray;
+$input-border-color: black;
+
+$sitecolor: lighten(#500014, 5%);
+
+// theme colors
+$primary: $sitecolor;
+$secondary: lighten($sitecolor, 10%);
+$dark: darken($sitecolor, 5%);
 
 @import "~bootstrap/scss/bootstrap.scss";
+
+body, html, #app { height: 100%; }
