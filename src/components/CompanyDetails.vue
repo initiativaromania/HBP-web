@@ -3,7 +3,7 @@
         <b-card :title="details.Nume" header-bg-variant="primary" header-text-variant="white"
             :sub-title="details.UAT + ' CUI ' + details.CUI" no-body header-tag="header">
             <template slot="header">
-              Instituție publică: <b>{{ details.Nume }}</b>, {{details.UAT}}
+              Companie: <b>{{ details.Nume }}</b>
             </template>
             <!-- <p class="card-text">Adresă: {{ details.Adresa }}</p> -->
             <b-tabs card>
@@ -45,6 +45,9 @@
                       thousands="." decimals=","
                       legend="bottom" title="Evoluție număr" :colors="['#b00', '#666']"/>
                     <br/>
+                  </b-col>
+                  <b-col>
+                    <highmaps :options="mapOptions" />
                   </b-col>
                 </b-row>
                 <b-row><b-col>
@@ -119,11 +122,11 @@
                             <td>{{currContract.TipIncheiereContract}}</td>
                           </tr>
                           <tr>
-                            <th class="text-center" colspan="2">Companie</th>
+                            <th class="text-center" colspan="2">Instituție</th>
                           </tr>
                           <tr>
                             <td class="text-center" colspan="2">
-                              <b-btn size="sm" :to="{name: 'CompanyDetails', params: {type: 'AD', id: currContract.CompanieId}}">{{currContract.NumeCompanie}}</b-btn>
+                              <b-btn size="sm" :to="{name:'InstitutionDetails', params: {id: currContract.InstitutiePublicaID}}">{{currContract.NumeInstitutie}}</b-btn>
                             </td>
                           </tr>
                         </tbody>
@@ -236,11 +239,11 @@
                             <td>{{currTender.ValoareEstimataParticipare | currency}}</td>
                           </tr>
                           <tr>
-                            <th class="text-center" colspan="2">Companie</th>
+                            <th class="text-center" colspan="2">Instituție</th>
                           </tr>
                           <tr>
                             <td class="text-center" colspan="2">
-                              <b-btn size="sm" :to="{name: 'CompanyDetails', params: {type: 'Tender', id: currTender.CompanieId}}" >{{currTender.NumeCompanie}}</b-btn>
+                              <b-btn size="sm" :to="{name:'InstitutionDetails', params: {id: currTender.InstitutiePublicaID}}">{{currTender.NumeInstitutie}}</b-btn>
                             </td>
                           </tr>
                         </tbody>
@@ -257,34 +260,34 @@
                   </b-col>
                 </b-row>
               </b-tab>
-              <b-tab title="Companii">
+              <b-tab title="Instituții">
                 <b-row>
                   <b-col>
-                    <b-pagination :total-rows="companies.length" :per-page="companyPageSize" v-model="companyPage" size="sm" :limit="10"/>
+                    <b-pagination :total-rows="institutions.length" :per-page="institutionPageSize" v-model="institutionPage" size="sm" :limit="10"/>
                   </b-col>
                   <b-col sm="1">
-                    <b-form-select v-model="companyPageSize" :options="[10,25,50,100]" size="sm"/>
+                    <b-form-select v-model="institutionPageSize" :options="[10,25,50,100]" size="sm"/>
                   </b-col>
                 </b-row>
                 <b-row><b-col>
-                  <b-table striped responsive stacked="md" small hover :items="companies" :per-page="companyPageSize" :current-page="companyPage"
-                  :fields="companyFields">
+                  <b-table striped responsive stacked="md" small hover :items="institutions" :per-page="institutionPageSize" :current-page="institutionPage"
+                  :fields="institutionFields">
                     <template slot="table-colgroup">
                       <col width="*" />
                       <col span="2" width="160px" />
                       <col width="50px" />
                     </template>
                     <template slot="action" slot-scope="data">
-                      <b-btn size="sm" :to="{name: 'CompanyDetails', params: {id: data.item.CompanieId, type: data.item.type}}">Detalii</b-btn>
+                      <b-btn size="sm" :to="{name: 'InstitutionDetails', params: {id: data.item.Id}}">Detalii</b-btn>
                     </template>
                   </b-table>
                 </b-col></b-row>
                 <b-row>
                   <b-col>
-                    <b-pagination :total-rows="companies.length" :per-page="companyPageSize" v-model="companyPage" size="sm" :limit="10"/>
+                    <b-pagination :total-rows="institutions.length" :per-page="institutionPageSize" v-model="institutionPage" size="sm" :limit="10"/>
                   </b-col>
                   <b-col sm="1">
-                    <b-form-select v-model="companyPageSize" :options="[10,25,50,100]" size="sm"/>
+                    <b-form-select v-model="institutionPageSize" :options="[10,25,50,100]" size="sm"/>
                   </b-col>
                 </b-row>
               </b-tab>
@@ -298,42 +301,65 @@ import Vue from 'vue'
 import moment from 'moment'
 import vueSlider from 'vue-slider-component'
 import _ from 'lodash'
+import RomaniaMap from '@/common/ro-all'
 import CPVLegend from '@/common/cvplegend'
 
 export default {
-  name: 'InstitutionDetails',
+  name: 'CompanyDetails',
   components: { vueSlider },
   beforeRouteEnter (to, from, next) {
-    var detailsReq = Vue.axios.get('InstitutionById/' + to.params.id)
-    var tendersReq = Vue.axios.get('InstitutionTenders/' + to.params.id + '?fetchAll=true')
-    var contractsReq = Vue.axios.get('InstitutionContracts/' + to.params.id + '?fetchAll=true')
-    var adCompaniesReq = Vue.axios.get('ADCompaniesByInstitution/' + to.params.id)
-    var tenderCompaniesReq = Vue.axios.get('TenderCompaniesByInstitution/' + to.params.id)
+    var revType = to.params.type === 'AD' ? 'Tender' : 'AD'
 
-    Promise.all([detailsReq, tendersReq, contractsReq, adCompaniesReq, tenderCompaniesReq])
-      .then(([details, tenders, contracts, adCompanies, tenderCompanies]) => {
+    var detailsReq = Vue.axios.get(to.params.type + 'Company/' + to.params.id)
+      .then(res => {
+        var details = res.data[0]
+        details[to.params.type + 'Id'] = details.CompanieId
+        return Vue.axios.get(`${revType}CompanyByCUI/${details.CUI}`).then(tres => {
+          if (tres.data.length === 0) {
+            return new Promise(resolve => { resolve([details, null, null]) })
+          }
+
+          var detailsDReq = new Promise(resolve => { resolve(details) })
+          details[revType + 'Id'] = tres.data[0].CompanieId
+          var contracts2Req = Vue.axios.get(
+            (revType === 'Tender' ? 'TenderCompanyTenders/' : 'ADCompanyContracts/') + details[revType + 'Id'] + '?fetchAll=true')
+          var institutions2Req = Vue.axios.get(`InstitutionsBy${revType}Company/${details[revType + 'Id']}`)
+          return Promise.all([detailsDReq, contracts2Req, institutions2Req])
+        })
+      })
+    var contracts1Req = Vue.axios.get(
+      (to.params.type === 'Tender' ? 'TenderCompanyTenders/' : 'ADCompanyContracts/') + to.params.id + '?fetchAll=true')
+    var institutions1Req = Vue.axios.get(`InstitutionsBy${to.params.type}Company/${to.params.id}`)
+
+    Promise.all([detailsReq, contracts1Req, institutions1Req])
+      .then(([[details, contracts2, institutions2], contracts1, institutions1]) => {
         next(vm => {
-          vm.details = details.data[0]
-          vm.tenders = tenders.data
-          vm.contracts = contracts.data
-          vm.companies = [
-            ...adCompanies.data.map(r => ({...r, type: 'AD'})),
-            ...tenderCompanies.data.map(r => ({...r, type: 'Tender'}))
+          vm.details = details
+          if (to.params.type === 'AD') {
+            vm.tenders = contracts2 === null ? [] : contracts2.data
+            vm.contracts = contracts1.data
+          } else {
+            vm.contracts = contracts2 === null ? [] : contracts2.data
+            vm.tenders = contracts1.data
+          }
+          vm.institutions = [
+            ...(institutions2 === null ? [] : institutions2.data),
+            ...(institutions1.data)
           ]
         })
       })
   },
   beforeRouteUpdate (to, from, next) {
-    var detailsReq = Vue.axios.get('InstitutionById/' + to.params.id)
-    var tendersReq = Vue.axios.get('InstitutionTenders/' + to.params.id)
-    var contractsReq = Vue.axios.get('InstitutionContracts/' + to.params.id)
+    var detailsReq = Vue.axios.get(to.params.type + 'Company/' + to.params.id)
+    var contractsReq = Vue.axios.get(
+      (to.params.type === 'Tender' ? 'TenderCompanyTenders/' : 'ADCompanyContracts/') + to.params.id + '?fetchAll=true')
+    var institutionsReq = Vue.axios.get(`InstitutionsBy${to.params.type}Company/${to.params.id}`)
 
-    Promise.all([detailsReq, tendersReq, contractsReq])
-      .then(([details, tenders, contracts]) => {
+    Promise.all([detailsReq, contractsReq, institutionsReq])
+      .then(([details, contracts, institutions]) => {
         this.details = details.data[0]
-        this.tenders = tenders.data
         this.contracts = contracts.data
-        // this.chart1Build(this.chart1Params)
+        this.institutions = institutions
         next()
       })
   },
@@ -346,9 +372,9 @@ export default {
       tenders: [],
       tenderPage: 1,
       tenderPageSize: 10,
-      companies: [],
-      companyPage: 1,
-      companyPageSize: 10,
+      institutions: [],
+      institutionPage: 1,
+      institutionPageSize: 10,
       contractFields: [
         {
           key: 'TitluContract',
@@ -368,13 +394,14 @@ export default {
           label: 'Denumire',
           sortable: true,
           isRowHeader: false,
+          thStyle: { maxWidth: '350px', textColor: 'red' },
           tdClass: 'titlu'
         },
         { key: 'ValoareRON', label: 'Valoare', sortable: true },
-        { key: 'DataContract', label: 'Data', sortable: true },
+        { key: 'DataContract', label: 'Dată', sortable: true },
         { key: 'action' }
       ],
-      companyFields: [
+      institutionFields: [
         {
           key: 'Nume',
           label: 'Denumire',
@@ -394,6 +421,26 @@ export default {
         {name: 'Număr AD', data: []},
         {name: 'Număr licitații', data: []}
       ],
+      mapOptions: {
+        chart: {borderWidth: 0},
+        title: {text: 'Volum contracte și licitații'},
+        legend: {enabled: true},
+        series: [{
+          name: 'Volum',
+          mapData: RomaniaMap,
+          data: [
+            ['ro-bi', 2],
+            ['ro-ph', 1],
+            ['ro-ct', 3],
+            ['ro-if', 4]
+          ],
+          dataLabels: {
+            enabled: true,
+            format: '{point.name}'
+          }
+        }],
+        colorAxis: {}
+      },
       dateParams: ['01-2007', moment().format('MM-YYYY')],
       dateRange: (() => {
         var ret = []
@@ -425,7 +472,7 @@ export default {
         this.$root.$emit('bv::show::modal', 'contractModal', button)
         return
       }
-      Vue.axios.get('Contract/' + data.ContracteId).then(cRet => {
+      Vue.axios.get('Contract/' + data.ID).then(cRet => {
         data.details = cRet.data[0]
         this.currContract = data.details
         var cpvCateg = this.currContract.CPVCode.substring(0, 2)
@@ -444,7 +491,7 @@ export default {
         this.$root.$emit('bv::show::modal', 'tenderModal', button)
         return
       }
-      Vue.axios.get('Tender/' + data.LicitatieID).then(cRet => {
+      Vue.axios.get('Tender/' + data.ID).then(cRet => {
         data.details = cRet.data[0]
         this.currTender = data.details
         var cpvCateg = this.currTender.CPVCode.substring(0, 2)
@@ -476,6 +523,9 @@ export default {
 
         // process distribution by CPF
         var c3data = {}
+
+        // process geographical distribution
+        var mapData = {}
 
         // process histogram
         var keys = []
@@ -518,7 +568,7 @@ export default {
         var contractSumHist = {}
         var tenderSumHist = {}
 
-        for (var contract of this.contracts) {
+        for (var contract of contracts) {
           var cpv = contract.CPVCode.substring(0, 2)
           if (!(cpv in c3data)) { c3data[cpv] = 0 }
           c3data[cpv] += contract.ValoareRON
@@ -539,9 +589,15 @@ export default {
           } else {
             contractSumHist[key] += contract.ValoareRON
           }
+
+          if (!(contract.Judet in mapData)) {
+            mapData[contract.Judet] = contract.ValoareRON
+          } else {
+            mapData[contract.Judet] += contract.ValoareRON
+          }
         }
 
-        for (var tender of this.tenders) {
+        for (var tender of tenders) {
           cpv = tender.CPVCode.substring(0, 2)
           if (!(cpv in c3data)) { c3data[cpv] = 0 }
           c3data[cpv] += tender.ValoareRON
@@ -562,6 +618,12 @@ export default {
           } else {
             tenderSumHist[key] += tender.ValoareRON
           }
+
+          if (!(tender.Judet in mapData)) {
+            mapData[tender.Judet] = tender.ValoareRON
+          } else {
+            mapData[tender.Judet] += tender.ValoareRON
+          }
         }
 
         // postprocess: keep 20, aggregate rest
@@ -579,6 +641,16 @@ export default {
           { name: 'Număr AD', data: keys.map(r => [r.toISOString(), contractCountHist[r.toISOString()] || 0]) },
           { name: 'Număr Licitații', data: keys.map(r => [r.toISOString(), tenderCountHist[r.toISOString()] || 0]) }
         ]
+
+        // postprocess: translate map keys
+        var mapData2 = []
+        for (let k of Object.keys(mapData)) {
+          var r2 = RomaniaMap.features.find(r => r.properties.name === k || r.properties['woe-name'] === k ||
+            (r.properties['alt-name'] && r.properties['alt-name'].includes(k)))
+          if (r2 === undefined) { console.log(`Not found in map: ${k}`); continue }
+          mapData2.push([r2.properties['hc-key'], mapData[k]])
+        }
+        this.mapOptions.series[0].data = mapData2
       }, 500
     )
   },

@@ -7,7 +7,7 @@
       <b-navbar-toggle target="nav_collapse" />
       <b-collapse is-nav id="nav_collapse">
         <b-navbar-nav class="ml-auto pr-5">
-          <b-nav-item :to="{name: 'Home'}">Hartă</b-nav-item>
+          <b-nav-item :to="{path: '/'}" exact>Hartă</b-nav-item>
           <b-nav-item href="#">Info</b-nav-item>
           <b-nav-item href="#">Statistici</b-nav-item>
           <b-nav-item href="#">Contact</b-nav-item>
@@ -19,7 +19,6 @@
         <b-col><router-view/></b-col>
       </b-row>
     </b-container>
-    {{ routeIsHome ? "true" : "false"}}
   </div>
 </template>
 
@@ -28,10 +27,11 @@ export default {
   name: 'App',
   data () {
     return {
+      routeIsHome: this.$route.name === 'Home'
     }
   },
-  computed: {
-    routeIsHome: function () { return this.$router.currentRoute.name === 'Home' }
+  watch: {
+    $route: function (value) { this.routeIsHome = (value.name === 'Home') }
   }
 }
 </script>

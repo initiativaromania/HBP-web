@@ -14,12 +14,40 @@ import {loadProgressBar} from 'axios-progress-bar'
 import './assets/app.scss'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import BootstrapVue from 'bootstrap-vue'
+import jquery from 'jquery'
+
+// chartKick
+import VueChartkick from 'vue-chartkick'
+import Chart from 'chart.js'
+
+// highcharts
+import VueHighcharts from 'vue-highcharts'
+import HighCharts from 'highcharts'
+import loadMap from 'highcharts/modules/map'
+
+import vueSlider from 'vue-slider-component'
 
 // gmaps
 import * as VueGoogleMaps from 'vue2-google-maps'
 
+// filters
+import VueTruncate from 'vue-truncate'
+import VueCurrencyFilter from 'vue-currency-filter'
+import VueMoment from 'vue-moment'
+
+Vue.use({
+  install: function (Vue, options) {
+    Vue.prototype.$ = jquery
+  }
+})
+
 // boostrap use
 Vue.use(BootstrapVue)
+
+Vue.use(VueChartkick, {adapter: Chart})
+loadMap(HighCharts)
+Vue.use(VueHighcharts, { HighCharts })
+Vue.use(vueSlider)
 
 // axios config
 axios.defaults.baseURL = process.env.API_URL
@@ -33,6 +61,17 @@ Vue.use(VueGoogleMaps, {
     libraries: 'places,drawing,visualization'
   }
 })
+
+Vue.use(VueTruncate)
+Vue.use(VueCurrencyFilter, {
+  symbol: 'RON',
+  thousandsSeparator: '.',
+  fractionCount: 2,
+  fractionSeparator: ',',
+  symbolPosition: 'front',
+  symbolSpacing: true
+})
+Vue.use(VueMoment)
 
 Vue.config.productionTip = false
 

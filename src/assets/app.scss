@@ -20,3 +20,77 @@ $info: #21212d;
 @import "~bootstrap/scss/bootstrap.scss";
 
 body, html, #app { height: 100%; }
+
+
+// .gm-style-iw {
+//     // top: 0px !important;
+//     // left: 0px !important;
+//     //bottom: 0px !important;
+//     // right: 0px !important;
+//     // width: 100% !important;
+//     //height: 100%;
+// }
+
+.gmap-iw-card {
+    border: none;
+}
+
+.gmap-iw-card .card-body {
+    padding: 10px;
+}
+
+.gmap-iw-card h4, .iw-title {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 1em;
+}
+
+.gm-style-iw {
+	width: 350px !important;
+	top: 15px !important;
+	left: 115px !important;
+	background-color: #fff;
+	// box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
+	// border: 1px solid rgba(72, 181, 233, 0.6);
+	// border-radius: 2px 2px 10px 10px;
+}
+
+// .gm-style .gm-style-iw {
+//     //background-color: $primary !important;
+//     // top: 0 !important;
+//     // left: 0 !important;
+//     width: 300px !important;
+//     // height: 100% !important;
+//     // min-height: 120px !important;
+//     //padding-top: 10px;
+//     // display: block !important;
+//  }
+
+//  .gm-style .gm-style-iw > div {
+//     //  top: 0; left: 0; bottom: 0; right: 0;
+//     //  min-width: 300px;
+//      border: 1px red dashed;
+//      width: 300px !important;
+//  }
+
+//  .gm-style-iw .container {
+//     //background-color: $primary !important;
+//     padding: 0;
+//     margin: 0;
+//     padding: 0;
+//     top: 0;
+//     width: 100% !important; height: 100% !important;
+//     color: #fff;
+//     font-size: 16px;
+// }
+
+// .gm-style-iw + div { display: none; }
+
+td.titlu {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 400px;
+    // display: block;
+}
