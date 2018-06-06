@@ -16,6 +16,9 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import BootstrapVue from 'bootstrap-vue'
 import jquery from 'jquery'
 
+// fontawesome
+import 'font-awesome/css/font-awesome.css'
+
 // chartKick
 import VueChartkick from 'vue-chartkick'
 import Chart from 'chart.js'
@@ -28,12 +31,14 @@ import loadMap from 'highcharts/modules/map'
 import vueSlider from 'vue-slider-component'
 
 // gmaps
-import * as VueGoogleMaps from 'vue2-google-maps'
+// import * as VueGoogleMaps from 'vue2-google-maps'
 
 // filters
 import VueTruncate from 'vue-truncate'
 import VueCurrencyFilter from 'vue-currency-filter'
 import VueMoment from 'vue-moment'
+
+import Toasted from 'vue-toasted'
 
 Vue.use({
   install: function (Vue, options) {
@@ -55,12 +60,12 @@ Vue.use(VueAxios, axios)
 loadProgressBar()
 
 // gmaps
-Vue.use(VueGoogleMaps, {
-  load: {
-    key: process.env.GMAP_API_KEY,
-    libraries: 'places,drawing,visualization'
-  }
-})
+// Vue.use(VueGoogleMaps, {
+//   load: {
+//     key: process.env.GMAP_API_KEY,
+//     libraries: 'places,drawing,visualization'
+//   }
+// })
 
 Vue.use(VueTruncate)
 Vue.use(VueCurrencyFilter, {
@@ -74,6 +79,8 @@ Vue.use(VueCurrencyFilter, {
 Vue.use(VueMoment)
 
 Vue.config.productionTip = false
+
+Vue.use(Toasted, {iconPack: 'fontawesome'})
 
 /* eslint-disable no-new */
 new Vue({

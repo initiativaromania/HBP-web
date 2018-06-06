@@ -9,7 +9,8 @@
         <b-navbar-nav class="ml-auto pr-5">
           <b-nav-item :to="{path: '/'}" exact>Hartă</b-nav-item>
           <b-nav-item href="#">Info</b-nav-item>
-          <b-nav-item href="#">Statistici</b-nav-item>
+          <b-nav-item :to="{path: '/stats'}">Statistici</b-nav-item>
+          <b-nav-item href="#">Echipa</b-nav-item>
           <b-nav-item href="#">Contact</b-nav-item>
         </b-navbar-nav>
       </b-collapse>

@@ -43,5 +43,7 @@ export default {
   '85': 'Servicii de sanatate si servicii de asistenta sociala',
   '90': 'Servicii de evacuare a apelor reziduale, de eliminare a deseurilor, de igienizare si servicii privind mediul',
   '92': 'Servicii de recreere, culturale si sportive',
-  '98': 'Alte servicii comunitare, sociale si personale'
+  '98': 'Alte servicii comunitare, sociale si personale',
+  // category 'xx' is used by server stats processor as a special value
+  'xx': 'Altele'
 }

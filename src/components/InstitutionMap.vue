@@ -4,28 +4,28 @@
         ref="gmap" id="gmap">
         <gmap-cluster
           :styles="
-            [{url:'/static/cluster.svg', width: 40, height: 40, textSize: 1,
+            [{url:'/static/cluster.png', width: 40, height: 40, textSize: 1,
             anchorIcon: [20,20]
             }]"
           >
           <gmap-marker
-            :key="m.InstitutiePublicaId"
+            :key="m.id"
             v-for="m in markers"
-            :position="{lat: m.lat, lng: m.long}"
+            :position="{lat: m.lat, lng: m.lng}"
             :clickable="true"
             :draggable="false"
-            :icon="{url: '/static/pin.svg', scaledSize: {width: 28, height: 40}, anchor: {x: 14, y: 40}}"
+            :icon="{url: '/static/pin.png', scaledSize: {width: 28, height: 40}, anchor: {x: 14, y: 40}}"
             :shape="{coords: [14,40, 5,28,  0,14, 4,4, 14,0, 24,4, 28,14, 23,28], type: 'poly'}"
             @click="selectMark(m)"
           />
         </gmap-cluster>
-        <gmap-info-window :position="{lat: selected.lat, lng: selected.long}" v-if="selected!==null" :opened="true"
+        <gmap-info-window :position="{lat: selected.lat, lng: selected.lng}" v-if="selected!==null" :opened="true"
               ref="infowindow" :options="{maxWidth: 350}">
-              <b-link :to="{name: 'InstitutionDetails', params: {id: selected.InstitutiePublicaId}}">
-                <b-card :title="selected.Nume" class="gmap-iw-card" style="width: 350px;">
+              <b-link :to="{name: 'InstitutionDetails', params: {id: selected.id}}">
+                <b-card :title="selected.name" class="gmap-iw-card" style="width: 350px;">
                   <table style="width: 100%;">
-                    <tr><th>Achiziții directe</th><td>{{ selected.nr_achizitii }}</td></tr>
-                    <tr><th>Licitații</th><td>{{ selected.nr_licitatii }}</td></tr>
+                    <tr><th>Achiziții directe</th><td>{{ selected.contracts }}</td></tr>
+                    <tr><th>Licitații</th><td>{{ selected.tenders }}</td></tr>
                   </table>
                 </b-card>
               </b-link>
@@ -177,26 +177,28 @@ export default {
   methods: {
     selectMark (item) {
       this.selected = item
-      this.$refs.gmap.panTo({lat: item.lat, lng: item.long})
-      this.axios.get(`PublicInstitutionSummary/${item.InstitutiePublicaId}`)
+      this.$refs.gmap.panTo({lat: parseFloat(item.lat), lng: parseFloat(item.lng)})
+      console.log({lat: parseFloat(item.lat), lng: parseFloat(item.lng)})
+      this.axios.get(`institution_summary/${item.id}`)
         .then(response => {
-          this.selected = {...item, ...response.data[0]}
+          this.selected = {...item, ...response.data}
           if (this.$refs.infowindow != null) {
             this.$refs.infowindow.openInfoWindow()
-            var iwOuter = this.$('.gm-style-iw')
-            var iwBackground = iwOuter.prev()
-            iwBackground.children(':nth-child(2)').css({display: 'none'})
-            iwBackground.children(':nth-child(4)').css({display: 'none'})
-            // iwOuter.parent().parent().css({left: '115px', border: '1px red dashed'})
-            // iwBackground.children(':nth-child(1)').attr('style', function (i, s) { return s + 'left: 76px !important;' })
-            // console.log(iwBackground.children(':nth-child(1)'))
-            // iwBackground.children(':nth-child(3)').attr('style', function (i, s) { console.log(s); return s + 'left: 76px !important;' })
-            // iwBackground.children(':nth-child(3)').css({left: '76px;'})
-            // console.log(iwBackground.children(':nth-child(3)').css('left'))
-            // iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': 'rgba(72, 181, 233, 0.6) 0px 1px 6px', 'z-index': '1'})
-            var iwCloseBtn = iwOuter.next()
-            iwCloseBtn.css({display: 'none'})
-            // iwCloseBtn.css({opacity: '1', right: '38px', top: '3px', border: '7px solid #48b5e9', 'border-radius': '13px', 'box-shadow': '0 0 5px #3990B9'})
+            // return
+            // var iwOuter = this.$('.gm-style-iw')
+            // var iwBackground = iwOuter.prev()
+            // iwBackground.children(':nth-child(2)').css({display: 'none'})
+            // iwBackground.children(':nth-child(4)').css({display: 'none'})
+            // // iwOuter.parent().parent().css({left: '115px', border: '1px red dashed'})
+            // // iwBackground.children(':nth-child(1)').attr('style', function (i, s) { return s + 'left: 76px !important;' })
+            // // console.log(iwBackground.children(':nth-child(1)'))
+            // // iwBackground.children(':nth-child(3)').attr('style', function (i, s) { console.log(s); return s + 'left: 76px !important;' })
+            // // iwBackground.children(':nth-child(3)').css({left: '76px;'})
+            // // console.log(iwBackground.children(':nth-child(3)').css('left'))
+            // // iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': 'rgba(72, 181, 233, 0.6) 0px 1px 6px', 'z-index': '1'})
+            // var iwCloseBtn = iwOuter.next()
+            // iwCloseBtn.css({display: 'none'})
+            // // iwCloseBtn.css({opacity: '1', right: '38px', top: '3px', border: '7px solid #48b5e9', 'border-radius': '13px', 'box-shadow': '0 0 5px #3990B9'})
           }
         })
       var iwOuter = this.$('.gm-style-iw')
@@ -215,7 +217,7 @@ export default {
     }
   },
   mounted () {
-    this.axios.get('InstitutionByCity/Bucuresti')
+    this.axios.get('institutions')
       .then(response => {
         this.markers = response.data
       })
