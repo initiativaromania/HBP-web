@@ -70,11 +70,29 @@
       <b-tab title="Top companii">
         <b-row>
           <b-col>
-            <b-table striped hover :items="stats.companies.by_contract" style="wdith: 100%;" caption-top>
+            <b-table striped hover :items="stats.companies.by_contract" style="wdith: 100%;" caption-top
+            :fields="[
+                { key: 'name', label: 'Titlu' },
+                { key: 'reg_no', label: 'CUI' },
+                { key: 'count', label: 'Număr contracte' },
+                { key: 'action', label: '' }
+              ]">
               <template slot="table-caption">După numărul de achiziții directe</template>
+              <template slot="action" slot-scope="data">
+                <b-btn size="sm" :to="{name: 'CompanyDetails', params: {id: data.item.id}}">Detalii</b-btn>
+              </template>
             </b-table>
-            <b-table striped hover :items="stats.companies.by_tender" style="wdith: 100%;" caption-top>
+            <b-table striped hover :items="stats.companies.by_tender" style="wdith: 100%;" caption-top
+            :fields="[
+                { key: 'name', label: 'Titlu' },
+                { key: 'reg_no', label: 'CUI' },
+                { key: 'count', label: 'Număr contracte' },
+                { key: 'action', label: '' }
+              ]">
               <template slot="table-caption">După numărul de licitații</template>
+              <template slot="action" slot-scope="data">
+                <b-btn size="sm" :to="{name: 'CompanyDetails', params: {id: data.item.id}}">Detalii</b-btn>
+              </template>
             </b-table>
           </b-col>
         </b-row>
