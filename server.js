@@ -1,7 +1,8 @@
 const { Nuxt, Builder } = require('nuxt')
 
 const app = require('express')()
-const isProd = (process.env.NODE_ENV === 'production')
+// const isProd = (process.env.NODE_ENV === 'production')
+const isProd = true
 const port = process.env.PORT || 3000
 
 // We instantiate nuxt.js with the options
@@ -9,8 +10,12 @@ const config = require('./nuxt.config.js')
 config.dev = !isProd
 const nuxt = new Nuxt(config)
 
+app.get('/test.txt', (req,res) => {
+  res.send("Default content")
+})
+
 // Render every route with Nuxt.js
-app.use(nuxt.render)
+//app.use(nuxt.render)
 
 // Build only in dev mode with hot-reloading
 if (config.dev) {
