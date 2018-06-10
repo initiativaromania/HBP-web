@@ -4,6 +4,10 @@
   "description": "Harta Banilor Publici",
   "author": "George Barbarosie <george.barbarosie@gmail.com>",
   "private": true,
+  "main": "server.js",
+  "engines": {
+    "node": "8.9.4"
+  },
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
