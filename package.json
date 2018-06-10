@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
-    "start": "nuxt build && nuxt start",
+    "start": "nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint"
@@ -22,8 +22,10 @@
     "chart.js": "^2.7.2",
     "google-maps-api": "^2.0.1",
     "highcharts": "^6.1.0",
+    "node-sass": "^4.9.0",
     "nuxt": "^1.0.0",
     "nuxt-google-maps-module": "^1.5.5",
+    "sass-loader": "^7.0.3",
     "vue-chartkick": "^0.3.3",
     "vue-currency-filter": "^2.2.6",
     "vue-highcharts": "0.0.10",

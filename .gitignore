@@ -17,3 +17,6 @@ yarn.lock
 *.ntvs*
 *.njsproj
 *.sln
+
+#nuxt output 
+.nuxt/
