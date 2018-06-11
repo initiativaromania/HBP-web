@@ -16,13 +16,17 @@
                   <p class="card-text">Această pagină îți oferă informații despre toate achizițiile publice contractate de
                     instituția publică aleasă de tine, în intervalul de timp selectat de tine (vezi mai jos).
                     <br/>
-                  <b>Instituția publică</b> este <i>(definiție TBA)</i>
+                  <b>Instituția publică</b> - instituţie cu personalitate juridică, a administraţiei publice centrale, locale sau europene, care gestionează resurse financiare publice.
                     <br/>
-                  <b>Achizițiile directe</b> sunt <i>(definiție TBA)</i>
+                  <b>Achiziție directă</b> - achiziționarea de produse, servicii sau lucrări în măsura în care valoarea estimată a achiziției nu depășește echivalentul în lei a 15.000 Euro pentru fiecare achiziție de produse, servicii sau lucrări.
                     <br/>
-                  <b>Licitațiile</b> sunt <i>(definiție TBA)</i>
+                  Achiziția directă rămâne în exteriorul definiției propriu-zise a contractului de achiziție publică întrucât nu esste corelată cu o procedură de atribuire. Achiziția directă se realizează pe bază de document justificativ.
+
                     <br/>
-                  <b>CPV</b> este denumirea unică a <i>(definiție TBA)</i>
+                  <b>Licitația</b> - Procedura de licitație deschisă este reglementată de legea 98/2016. Este vorba de modul de realizare a achizițiilor publice și de organizare a concursurilor de soluții, instrumentele și tehnicile specifice care pot fi utilizate pentru atribuirea de contracte de achiziție publică, precum și anumite aspecte specific în legătură cu executarea contractelor de achiziție publică.
+                    <br/>
+                  <b>CPV</b> - Codul CPV stabileşte un singur sistem de clasificare pentru achiziţiile publice cu scopul de a standardiza referinţele utilizate de autorităţile şi entităţile contractante pentru a descrie obiectul contractelor de achiziţii publice.
+                  
                     <br/>
                   Dacă dorești să faci propria analiză folosește butonul <b>Descarcă date</b> de lângă fiecare diagramă de pe pagină.
                     </p>
@@ -56,12 +60,12 @@
           <b-row>
             <b-col cols="4">
               <pie-chart :colors="['#b00', '#666']" :data="volume_pie" :donut="true" suffix=" RON"
-                thousands="." decimals="," title="Volum tranzacții"
+                thousands=" " decimals="," title="Volum tranzacții"
                 :download="true" :library="chartOptions"/>
             </b-col>
             <b-col cols="8">
               <line-chart :data="volume_hist" :discrete="false" xtitle="Dată" :download="true"
-                suffix=" RON" thousands="." decimals=","
+                suffix=" RON" thousands=" " decimals=","
                 legend="bottom" title="Evoluție volum" :colors="['#b00', '#666']"/>
             </b-col>
           </b-row>
@@ -80,12 +84,12 @@
           <b-row>
             <b-col cols="4">
               <pie-chart :colors="['#b00', '#666']" :data="count_pie" :donut="true"
-                thousands="." title="Număr contracte"
+                thousands=" " title="Număr contracte"
                 :download="true" :library="chartOptions"/>
             </b-col>
             <b-col cols="8">
               <line-chart :data="count_hist" :discrete="false" xtitle="Dată" :download="true"
-                thousands="." decimals=","
+                thousands=" " decimals=","
                 legend="bottom" title="Evoluție număr" :colors="['#b00', '#666']"/>
               <br/>
             </b-col>
@@ -102,7 +106,7 @@
           <b-row>
             <b-col cols="4">
               <pie-chart :data="cpv_pie" :donut="true" suffix=" RON"
-                  thousands="." decimals="," title="Volum după CPV"
+                  thousands=" " decimals="," title="Volum după CPV"
                   :download="true" :library="chartOptions" :legend="false"/>
             </b-col>
           </b-row>

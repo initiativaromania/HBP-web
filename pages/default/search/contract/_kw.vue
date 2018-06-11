@@ -1,13 +1,15 @@
 <template>
   <b-container fluid>
-    <b-row class="py-2">
-      <b-col>
-        <b-form-input class="sm" type="text" v-model="kw" placeholder="Cuvinte cheie"/>
-      </b-col>
-      <b-col sm="1">
-        <b-button type="submit" variant="primary" @click="doSearch()">Caută</b-button>
-      </b-col>
-    </b-row>
+    <b-form @submit.prevent="doSearch()">
+      <b-row class="py-2">
+        <b-col>
+          <b-form-input class="sm" type="text" v-model="kw" v-on:keyup.enter="submit" placeholder="Cuvinte cheie"/>
+        </b-col>
+        <b-col sm="1">
+          <b-button type="submit" variant="primary">Caută</b-button>
+        </b-col>
+      </b-row>
+    </b-form>
     <b-tabs>
       <b-tab title="Achiziții directe">
         <b-row>

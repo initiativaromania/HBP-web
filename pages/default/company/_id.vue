@@ -57,12 +57,12 @@
           <b-row>
             <b-col cols="4">
               <pie-chart :colors="['#b00', '#666']" :data="volume_pie" :donut="true" suffix=" RON"
-                thousands="." decimals="," title="Volum tranzacții"
+                thousands=" " decimals="," title="Volum tranzacții"
                 :download="true" :library="chartOptions"/>
             </b-col>
             <b-col cols="7">
               <line-chart :data="volume_hist" :discrete="false" xtitle="Dată" :download="true"
-                suffix=" RON" thousands="." decimals=","
+                suffix=" RON" thousands=" " decimals=","
                 legend="bottom" title="Evoluție volum" :colors="['#b00', '#666']"/>
             </b-col>
           </b-row>
@@ -81,12 +81,12 @@
           <b-row>
             <b-col cols="4">
               <pie-chart :colors="['#b00', '#666']" :data="count_pie" :donut="true"
-                thousands="." title="Număr contracte"
+                thousands=" " title="Număr contracte"
                 :download="true" :library="chartOptions"/>
             </b-col>
             <b-col>
               <line-chart :data="count_hist" :discrete="false" xtitle="Dată" :download="true"
-                thousands="." decimals=","
+                thousands=" " decimals=","
                 legend="bottom" title="Evoluție număr" :colors="['#b00', '#666']"/>
               <br/>
             </b-col>
@@ -102,7 +102,7 @@
           <b-row>
             <b-col cols="4">
               <pie-chart :data="cpv_pie" :donut="true" suffix=" RON"
-                  thousands="." decimals="," title="Volum după CPV"
+                  thousands=" " decimals="," title="Volum după CPV"
                   :download="true" :library="chartOptions" :legend="false"/>
             </b-col>
             <b-col cols="8">

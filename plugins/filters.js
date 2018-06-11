@@ -4,7 +4,7 @@ import VueMoment from 'vue-moment'
 
 Vue.use(VueCurrencyFilter, {
   symbol: 'RON',
-  thousandsSeparator: '.',
+  thousandsSeparator: ' ',
   fractionCount: 2,
   fractionSeparator: ',',
   symbolPosition: 'front',

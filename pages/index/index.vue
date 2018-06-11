@@ -17,16 +17,16 @@
           <b-form-text tag="h4" text-variant="darkq">Caută achiziții</b-form-text>
           </b-form-group>
           <b-form-group id="keywordsGroup">
-            <b-form-input id="keywordsInput" type="text" v-model="params.keywords" placeholder="Cuvinte cheie"/>
+            <b-form-input id="keywordsInput" type="text" v-model="params.keywords" v-on:keyup.enter="submit" placeholder="Cuvinte cheie"/>
           </b-form-group>
           <b-form-group id="institutionsGroup">
-            <b-form-input id="institutionsInput" type="text" v-model="params.institution" placeholder="Instituții"/>
+            <b-form-input id="institutionsInput" type="text" v-model="params.institution" v-on:keyup.enter="submit" placeholder="Instituții"/>
           </b-form-group>
           <b-form-group id="companiesGroup">
-            <b-form-input id="companiesInput" type="text" v-model="params.company" placeholder="Societăți comerciale"/>
+            <b-form-input id="companiesInput" type="text" v-model="params.company" v-on:keyup.enter="submit" placeholder="Societăți comerciale"/>
           </b-form-group>
           <b-form-group id="vatGroup">
-            <b-form-input id="vatInput" type="text" v-model="params.reg_no" placeholder="CUI"/>
+            <b-form-input id="vatInput" type="text" v-model="params.reg_no" v-on:keyup.enter="submit" placeholder="CUI"/>
           </b-form-group>
           <b-button type="submit" variant="primary" style="width: 100%;">Caută</b-button>
         </b-form>
