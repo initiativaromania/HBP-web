@@ -10,7 +10,7 @@
           <b-nav-item :to="{path: '/'}" exact>Hartă</b-nav-item>
           <b-nav-item href="#">Info</b-nav-item>
           <b-nav-item :to="{path: '/default/stats'}">Statistici</b-nav-item>
-          <b-nav-item href="#">Echipa</b-nav-item>
+          <b-nav-item :to="{path: '/default/team'}">Echipa</b-nav-item>
           <b-nav-item href="#">Contact</b-nav-item>
         </b-navbar-nav>
       </b-collapse>

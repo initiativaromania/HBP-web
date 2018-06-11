@@ -355,11 +355,11 @@
               <template slot="action" slot-scope="data">
                 <b-btn size="sm" :to="{name: 'default-institution-id', params: {id: data.item.id}}">Detalii</b-btn>
               </template>
-              <template slot="contract_total_eur" slot-scope="data">
-                {{data.item.contract_total_eur | currency('EUR')}}
+              <template slot="contract_total_ron" slot-scope="data">
+                {{data.item.contract_total_ron | currency('RON')}}
               </template>
-              <template slot="tender_total_eur" slot-scope="data">
-                {{data.item.tender_total_eur | currency('EUR')}}
+              <template slot="tender_total_ron" slot-scope="data">
+                {{data.item.tender_total_ron | currency('RON')}}
               </template>
             </b-table>
           </b-col></b-row>
@@ -497,9 +497,9 @@ export default {
           tdClass: 'titlu'
         },
         { key: 'contract_count', label: 'Nr contracte', sortable: true },
-        { key: 'contract_total_eur', label: 'Total contracte', sortable: true },
+        { key: 'contract_total_ron', label: 'Total contracte', sortable: true },
         { key: 'tender_count', label: 'Nr licitații', sortable: true },
-        { key: 'tender_total_eur', label: 'Total licitații', sortable: true },
+        { key: 'tender_total_ron', label: 'Total licitații', sortable: true },
         { key: 'action' }
       ],
       volume_pie: [],
@@ -690,7 +690,7 @@ export default {
     return {
       title: `Harta banilor publici / statistici companie / ${this.details.name}`,
       meta: [
-        { hid: 'description', name: 'description', content: 'My custom description' }
+        { hid: 'description', name: 'description', content: `Statistici companie ${this.details.name}` }
       ]
     }
   }
