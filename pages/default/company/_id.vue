@@ -38,7 +38,13 @@
                    Îl poți schimba oricând dacă te răzgândești. Diagramele de mai jos vor reflecta valorile din
                    intervalul de timp selectat de tine.
                 </p>
-                <vue-slider :data="dateRange" v-model="dateParams" :piecewise="true" />
+                <vue-slider :data="dateRange" v-model="dateParams" :piecewise="true" 
+                  :slider-style="[{backgroundColor: '#500014'}, {backgroundColor: '#500014'}]"
+                  :bg-style="{backgroundColor: '#500014'}"
+                  :process-style="{backgroundColor: '#500014'}"
+                  :piecewise-style="{backgroundColor: '#500014'}"
+                  :tooltip-style="{backgroundColor: '#500014', borderColor: '#500014'}"
+                />
               </b-card>
             </b-col>
           </b-row>
