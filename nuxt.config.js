@@ -48,7 +48,8 @@ module.exports = {
     ['bootstrap-vue/nuxt', { css: false }],
     ['@nuxtjs/axios'],
     ['@nuxtjs/dotenv'],
-    ['nuxt-google-maps-module', { key: "AIzaSyA9NhBPMAbAkRR0_-yiO32gQr_vKUGqnsE", defer: false, async: false }]
+    ['nuxt-google-maps-module', { key: "AIzaSyA9NhBPMAbAkRR0_-yiO32gQr_vKUGqnsE", defer: false, async: false }],
+    '@nuxtjs/toast'
   ],
 
   css: [
@@ -64,5 +65,10 @@ module.exports = {
 
   axios: {
        baseURL: process.env.API_URL
+  },
+
+  toast: {
+    position: 'top-left',
+    iconPack: 'fontawesome'
   }
 }

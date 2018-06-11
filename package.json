@@ -25,6 +25,7 @@
     "bootstrap": "^4.1.1",
     "bootstrap-vue": "^2.0.0-rc.11",
     "chart.js": "^2.7.2",
+    "fontawesome": "^4.7.2",
     "google-maps-api": "^2.0.1",
     "highcharts": "^6.1.0",
     "node-sass": "^4.9.0",

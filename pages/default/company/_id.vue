@@ -111,9 +111,9 @@
                 <col width="50px" />
               </template>
               <template slot="price_ron" slot-scope="data">
-                {{data.item.ValoareRON | currency}}
+                {{data.item.price_ron | currency}}
               </template>
-              <template slot="price_ron" slot-scope="data">
+              <template slot="contract_date" slot-scope="data">
                 {{data.item.contract_date | moment('DD/MM/YYYY')}}
               </template>
               <template slot="action" slot-scope="data">

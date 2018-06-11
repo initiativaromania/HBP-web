@@ -45,5 +45,5 @@ export default {
   '92': 'Servicii de recreere, culturale si sportive',
   '98': 'Alte servicii comunitare, sociale si personale',
   // category 'xx' is used by server stats processor as a special value
-  'xx': 'Altele'
+  'others': 'Altele'
 }
