@@ -1,7 +1,6 @@
 <template>
   <b-container fluid>
     <b-tabs>
-
       <b-tab title="Top achiziții directe">
         <b-table striped hover :items="stats.contracts" style="wdith: 100%;"
           :fields="[

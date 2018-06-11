@@ -12,24 +12,40 @@
         </b-link>
       </div>
       <div id="gmapSearch">
-        <b-form @submit.prevent="doSearch()">
-          <b-form-group>
-          <b-form-text tag="h4" text-variant="darkq">Caută achiziții</b-form-text>
-          </b-form-group>
-          <b-form-group id="keywordsGroup">
-            <b-form-input id="keywordsInput" type="text" v-model="params.keywords" v-on:keyup.enter="submit" placeholder="Cuvinte cheie"/>
-          </b-form-group>
-          <b-form-group id="institutionsGroup">
-            <b-form-input id="institutionsInput" type="text" v-model="params.institution" v-on:keyup.enter="submit" placeholder="Instituții"/>
-          </b-form-group>
-          <b-form-group id="companiesGroup">
-            <b-form-input id="companiesInput" type="text" v-model="params.company" v-on:keyup.enter="submit" placeholder="Societăți comerciale"/>
-          </b-form-group>
-          <b-form-group id="vatGroup">
-            <b-form-input id="vatInput" type="text" v-model="params.reg_no" v-on:keyup.enter="submit" placeholder="CUI"/>
-          </b-form-group>
-          <b-button type="submit" variant="primary" style="width: 100%;">Caută</b-button>
-        </b-form>
+        <b-btn v-b-toggle.searchBar variant="outline-primary" size="sm"><span class="when-closed">+</span><span class="when-opened">-</span></b-btn>
+        <b-collapse id="searchBar" visible>
+          <b-form @submit.prevent="doSearch()">
+            <b-form-group>
+            <b-form-text tag="h4" text-variant="darkq">Caută achiziții</b-form-text>
+            </b-form-group>
+            <b-form-group id="keywordsGroup">
+              <b-form-input id="keywordsInput" type="text" v-model="params.keywords" v-on:keyup.enter="submit" placeholder="Cuvinte cheie"/>
+            </b-form-group>
+            <b-form-group id="institutionsGroup">
+              <b-form-input id="institutionsInput" type="text" v-model="params.institution" v-on:keyup.enter="submit" placeholder="Instituții"/>
+            </b-form-group>
+            <b-form-group id="companiesGroup">
+              <b-form-input id="companiesInput" type="text" v-model="params.company" v-on:keyup.enter="submit" placeholder="Societăți comerciale"/>
+            </b-form-group>
+            <b-form-group id="vatGroup">
+              <b-form-input id="vatInput" type="text" v-model="params.reg_no" v-on:keyup.enter="submit" placeholder="CUI"/>
+            </b-form-group>
+            <b-button type="submit" variant="primary" style="width: 100%;">Caută</b-button>
+          </b-form>
+        </b-collapse>
+      </div>
+      <div id="gmapMobile">
+        <div class="text-muted">
+          <b>Încearcă varianta de mobil a HBP!</b>
+          <p>Descoperă instituțiile publice din jurul tău, oriunde te-ai afla în România, și cum se cheltuie
+            banii publici!
+          </p>
+          <a href="https://itunes.apple.com/us/app/harta-banilor-publici/id1396034488" class="m-2" ><img src="/appstore.png" alt="Descarcă din Apple AppStore"></a>
+          <a href="https://play.google.com/store/apps/details?id=initiativaromania.hartabanilorpublici" target="_blank" class="m-2" ><img src="/google-play.png" alt="Descarcă din Google Play"></a>
+        </div>
+      </div>
+      <div id="gmapLogo">
+          <img src="/by-ir-grey.png" />
       </div>
     </div>
 </template>
@@ -273,11 +289,41 @@ export default {
 #gmapParent { height: 100%; width: 100%; }
 #gmap { width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
 #gmapSearch {
-  width: 260px;
+  /* width: 260px; */
   position: absolute;
-  top: 10%; left: 5%;
+  top: 0; left: 5%;
   background-color: rgba(255, 255, 255, 0.8);
   padding: 10px;
+  pointer-events: none;
+}
+
+#gmapSearch input, #gmapSearch button {
+  pointer-events: initial;
+}
+
+#gmapMobile {
+  max-width: 550px;
+  position: absolute;
+  bottom: 1rem; left: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  pointer-events: none;
+}
+
+#gmapMobile a[href] {
+  pointer-events: initial;
+}
+
+#gmapMobile > div {
+  padding-left: 4rem;
+}
+
+#gmapLogo {
+  position: absolute;
+  bottom: 1rem; right: 2rem;
+  background-color: rgba(255, 255, 255, 0.0);
+  padding: 10px;
+  pointer-events: none;
 }
 
 #gmapDebug {

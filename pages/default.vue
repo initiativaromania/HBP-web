@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <b-navbar toggleable="md" type="dark" variant="primary" fixed="top" :sticky="false">
+    <b-navbar toggleable="md" type="dark" variant="primary" fixed="top" sticky class="nav-top">
       <b-navbar-nav class="pl-5" />
       <b-navbar-brand :to="{path: '/'}"><img src="/logo_landscape.svg"
         height="60" alt="Harta Banilor Publici"/></b-navbar-brand>
@@ -20,6 +20,11 @@
         <b-col><nuxt-child/></b-col>
       </b-row>
     </b-container>
+    <b-navbar toggleable="sm" type="dark" variant="primary" fixed="bottom">
+      <b-navbar-brand class="ml-auto pr-5" href="https://www.initiativaromania.ro" target="_blank">
+        <img src="/by-ir-white.png" />
+      </b-navbar-brand>
+    </b-navbar>
   </div>
 </template>
 
@@ -40,7 +45,7 @@ export default {
 
 #app > .container-fluid.defaultView {
     padding: 0;
-    margin-top: 100px;
+    padding-bottom: 100px;
     /* height: 100%;
     top: 0; bottom: 0; */
 }
@@ -49,7 +54,7 @@ export default {
     width: 100%; height: 100%;
 }
 
-.navbar {
+.navbar.nav-top {
   min-height: 100px;
 }
 

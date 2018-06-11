@@ -37,6 +37,11 @@ hr.solid {
   border-top: 1px $sitecolor solid;
 }
 
+.collapsed > .when-opened,
+:not(.collapsed) > .when-closed {
+  display: none;
+}
+
 /* The location pointed to by the popup tip. */
 .popup-tip-anchor {
   height: 0;

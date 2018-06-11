@@ -1,5 +1,5 @@
 <template>
-  <b-container fluid="">
+  <b-container fluid>
     <h1 class="mt-3"> Info </h1>
     <p> <b>Inițiativa România</b> consideră că cetățenii au dreptul să beneficieze de informații de interes public, în mod gratuit, în timp real, 
       într-un format accesibil, lesne de ințeles și de utilizat, prelucrabil, care să permită cetățenilor să aibă o cunoaștere corectă și să 
@@ -27,8 +27,8 @@
         <li>aplicații mobile Android şi iOS.</li>
       </ul>
 
+      <a href="https://itunes.apple.com/us/app/harta-banilor-publici/id1396034488" class="m-2" ><img src="/appstore.png" alt="Descarcă din Apple AppStore"></a>
       <a href="https://play.google.com/store/apps/details?id=initiativaromania.hartabanilorpublici" target="_blank" class="m-2" ><img src="/google-play.png" alt="Descarcă din Google Play"></a>
-      <a href="#" class="m-2" ><img src="/appstore-soon.png" alt="Descarcă din Apple AppStore"></a>
     </p>
 
     <hr class="solid" />

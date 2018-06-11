@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <b-navbar toggleable="md" type="dark" variant="primary" fixed="bottom" :sticky="false">
+    <b-navbar toggleable="md" type="dark" variant="primary" fixed="bottom" :sticky="false" class="nav-top">
       <b-navbar-nav class="pl-5" />
       <b-navbar-brand :to="{path: '/'}"><img src="/logo_landscape.svg"
         height="60" alt="Harta Banilor Publici"/></b-navbar-brand>
@@ -15,7 +15,7 @@
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
-    <b-container fluid style="padding-bottom: 100px;">
+    <b-container fluid style="padding-bottom: 100px;" class="indexView">
       <b-row id="main" :no-gutters="true">
         <b-col><nuxt-child/></b-col>
       </b-row>
@@ -38,7 +38,7 @@ export default {
 <style>
 #app { position: relative; }
 
-#app > .container-fluid {
+#app > .container-fluid.indexView {
     padding: 0;
     /*margin-bottom: 100px;*/
     height: 100%;
@@ -49,7 +49,7 @@ export default {
     width: 100%; height: 100%;
 }
 
-.navbar {
+.navbar.nav-top {
   min-height: 100px;
 }
 
