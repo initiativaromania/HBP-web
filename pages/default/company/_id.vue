@@ -181,6 +181,11 @@
               <b-form-select v-model="contractPageSize" :options="[10,25,50,100]" size="sm"/>
             </b-col>
           </b-row>
+          <b-row>
+            <b-col>
+              <b-button variant="primary" @click="getAllContracts()">Descarcă date</b-button>
+            </b-col>
+          </b-row>
         </b-tab>
         <b-tab :title="'Licitații (' + details.tender_count + ')'">
           <b-row>
@@ -298,6 +303,11 @@
               <b-form-select v-model="tenderPageSize" :options="[10,25,50,100]" size="sm"/>
             </b-col>
           </b-row>
+          <b-row>
+            <b-col>
+              <b-button variant="primary" @click="getAllTenders()">Descarcă date</b-button>
+            </b-col>
+          </b-row>
         </b-tab>
         <b-tab title="Instituții">
           <b-row>
@@ -333,6 +343,11 @@
             </b-col>
             <b-col sm="1">
               <b-form-select v-model="institutionPageSize" :options="[10,25,50,100]" size="sm"/>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col>
+              <b-button variant="primary" @click="getAllInstitutions()">Descarcă date</b-button>
             </b-col>
           </b-row>
         </b-tab>
@@ -561,7 +576,37 @@ export default {
         }
         this.$root.$emit('bv::show::modal', 'tenderModal', button)
       })
-    }
+    },
+    getAllContracts () {
+      let req = this.$axios.get(`company/${this.$route.params.id}/contracts.csv`)
+      req.then(response => {
+        let blob = new Blob([response.data], { type: 'application/csv' } )
+        let link = document.createElement('a')
+        link.href = window.URL.createObjectURL(blob)
+        link.download = `achizitii_companie_${this.$route.params.id}.csv`
+        link.click()
+      })
+    },
+    getAllTenders () {
+      let req = this.$axios.get(`company/${this.$route.params.id}/tenders.csv`)
+      req.then(response => {
+        let blob = new Blob([response.data], { type: 'application/csv' } )
+        let link = document.createElement('a')
+        link.href = window.URL.createObjectURL(blob)
+        link.download = `licitatii_companie_${this.$route.params.id}.csv`
+        link.click()
+      })
+    },
+    getAllInstitutions () {
+      let req = this.$axios.get(`company/${this.$route.params.id}/institutions.csv`)
+      req.then(response => {
+        let blob = new Blob([response.data], { type: 'application/csv' } )
+        let link = document.createElement('a')
+        link.href = window.URL.createObjectURL(blob)
+        link.download = `institutii_companie_${this.$route.params.id}.csv`
+        link.click()
+      })
+    },
   },
   watch: {
     dateParams: _.debounce(function (params, oldParams) {
