@@ -1,8 +1,8 @@
 <template>
     <div>
+      <h1 class="mt-2"> {{ details.name }} - statistici companie</h1>
       <b-tabs card>
         <b-tab title="Sumar">
-          <b-row><b-col><h3> {{ details.name }} - statistici publice </h3></b-col></b-row>
           <b-row>
             <b-col>
               <b-card-group>
@@ -685,6 +685,14 @@ export default {
         this.mapOptions = details.mapOptions
       })
     }, 500)
+  },
+  head () {
+    return {
+      title: `Harta banilor publici / statistici companie / ${this.details.name}`,
+      meta: [
+        { hid: 'description', name: 'description', content: 'My custom description' }
+      ]
+    }
   }
 }
 </script>

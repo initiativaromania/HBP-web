@@ -17,6 +17,10 @@ $danger: #f44336;
 $warning: #d1750d;
 $info: #21212d;
 
+// heading sizes
+$h1-font-size: 1.5rem;
+$h2-font-size: 1.4rem;
+
 @import "~bootstrap/scss/bootstrap.scss";
 
 body, html, #__nuxt, #__layout, #app { height: 100%; }

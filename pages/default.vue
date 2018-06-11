@@ -15,7 +15,7 @@
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
-    <b-container fluid>
+    <b-container fluid class="defaultView">
       <b-row id="main" :no-gutters="true">
         <b-col><nuxt-child/></b-col>
       </b-row>
@@ -38,7 +38,7 @@ export default {
 <style>
 #app { position: relative; }
 
-#app > .container-fluid {
+#app > .container-fluid.defaultView {
     padding: 0;
     margin-top: 100px;
     /* height: 100%;

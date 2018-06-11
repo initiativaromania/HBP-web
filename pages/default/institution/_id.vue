@@ -1,10 +1,8 @@
 <template>
     <div>
+      <h1 class="mt-2"> {{details.name}} - statistici instituție publică </h1>
       <b-tabs card>
         <b-tab title="Sumar">
-          <b-row><b-col>
-            <h3> {{details.name}} - statistici contracte publice </h3>
-          </b-col></b-row>
           <b-row>
             <b-col>
               <b-card-group>
@@ -508,7 +506,6 @@ export default {
         `&perPage=${ctx.perPage}&sortBy=${ctx.sortBy}&sortDesc=${ctx.sortDesc}`)
       return req.then(({data}) => {
         this.contractsLength = parseInt(data.count, 10)
-        console.log(this.contractsLength)
         return data.items
       })
     },
@@ -619,7 +616,12 @@ export default {
         //   Vue.set(this.currTender, 'CompanieNume', adRet.data[0].Nume)
         // })
       })
-    }
+    },
+    // getShareLink () {
+    //   return 
+    //   console.log(document.URL)
+    //   //console.log(this.$router)
+    // }
   },
   watch: {
     dateParams: _.debounce(function (params, oldParams) {
@@ -635,6 +637,14 @@ export default {
         this.cpv_pie = details.cpv_pie
       })
     }, 500)
+  },
+  head () {
+    return {
+      title: `Harta banilor publici / statistici instituție publică / ${this.details.name}`,
+      meta: [
+        { hid: 'description', name: 'description', content: 'My custom description' }
+      ]
+    }
   }
 }
 </script>

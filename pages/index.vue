@@ -15,7 +15,7 @@
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
-    <b-container fluid style="paddingBottom: 100px;">
+    <b-container fluid style="padding-bottom: 100px;">
       <b-row id="main" :no-gutters="true">
         <b-col><nuxt-child/></b-col>
       </b-row>
@@ -40,7 +40,7 @@ export default {
 
 #app > .container-fluid {
     padding: 0;
-    /* margin-bottom: 100px; */
+    /*margin-bottom: 100px;*/
     height: 100%;
     top: 0; bottom: 0;
 }

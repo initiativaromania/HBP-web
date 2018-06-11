@@ -5,14 +5,15 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'hbp-web',
+    title: 'Harta Banilor Publici',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Harta Banilor Publici' }
+      { hid: 'Harta Banilor Publici', name: 'Harta Banilor Publici', content: 'Harta Banilor Publici' },
+      { property: 'og:image', content: '/logo_landscape.png' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/png', href: '/favicon.png' }
     ]
   },
   /*
@@ -41,7 +42,8 @@ module.exports = {
               'vue-slider-component', 'chart.js', 'vue-chartkick', 'highcharts', 'vue-highcharts',
               'lodash', 
               '~/assets/js/romaniaMap.js', '~/assets/js/cvplegend.js',
-              '~/assets/js/gmapsPopup.js']
+              '~/assets/js/gmapsPopup.js'
+            ]
   },
 
   modules: [
