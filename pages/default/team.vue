@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>Echipa HBP</h1>
-    <b-card-group deck class="mb-3 ">
+    <h1 class="my-3">Echipa HBP</h1>
+    <b-card-group deck class="mb-2 ">
       <b-card img-src="/echipa-elena-ghioc.jpg" img-top 
         title="Elena Ghioc" sub-title="Digital Strategist">
         <p class="card-text">
@@ -31,7 +31,7 @@
       </b-card>
 
     </b-card-group>
-    <b-card-group deck class="mb-3">
+    <b-card-group deck class="mb-2">
 
       <b-card img-src="/echipa-george-serbanescu.jpg" img-top 
         title="George Șerbănescu" sub-title="Software Engineer">
