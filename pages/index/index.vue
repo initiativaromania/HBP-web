@@ -118,7 +118,7 @@ export default {
           if (data.is_company)
             this.$router.push({name: 'default-company-id', params: {id: data.id}})
           else
-            this.$router.push({name: 'default-institution-id', paras: {id: data.id}})
+            this.$router.push({name: 'default-institution-id', params: {id: data.id}})
         }).catch(error => {
           this.$toasted.error('Codul unic nu există în baza de date', {
             position: 'top-left',
