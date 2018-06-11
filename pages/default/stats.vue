@@ -255,6 +255,7 @@
 
   </b-container>
 </template>
+
 <script>
 import Vue from 'vue'
 import CPVLegend from '@/assets/js/cvplegend'
@@ -304,6 +305,14 @@ export default {
         }
         this.$root.$emit('bv::show::modal', 'tenderModal', button)
       })
+    }
+  },
+  head () {
+    return {
+      title: 'Harta banilor publici / Statistici',
+      meta: [
+        { hid: 'description', name: 'description', content: 'Harta banilor publici - Statistici' }
+      ]
     }
   }
 }

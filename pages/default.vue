@@ -6,9 +6,9 @@
         height="60" alt="Harta Banilor Publici"/></b-navbar-brand>
       <b-navbar-toggle target="nav_collapse" />
       <b-collapse is-nav id="nav_collapse">
-        <b-navbar-nav class="ml-auto">
+        <b-navbar-nav class="ml-auto pr-5">
           <b-nav-item :to="{path: '/'}" exact>Hartă</b-nav-item>
-          <b-nav-item href="#">Info</b-nav-item>
+          <b-nav-item :to="{path: '/default/info'}">Info</b-nav-item>
           <b-nav-item :to="{path: '/default/stats'}">Statistici</b-nav-item>
           <b-nav-item :to="{path: '/default/team'}">Echipa</b-nav-item>
           <b-nav-item href="#">Contact</b-nav-item>

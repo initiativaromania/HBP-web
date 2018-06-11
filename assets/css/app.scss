@@ -33,6 +33,10 @@ td.titlu {
     // display: block;
 }
 
+hr.solid {
+  border-top: 1px $sitecolor solid;
+}
+
 /* The location pointed to by the popup tip. */
 .popup-tip-anchor {
   height: 0;

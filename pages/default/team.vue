@@ -56,3 +56,17 @@
     </b-card-group>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'Team',
+  head () {
+    return {
+      title: 'Harta banilor publici / Echipa HBP',
+      meta: [
+        { hid: 'description', name: 'description', content: 'Harta banilor publici - Echipa HBP' }
+      ]
+    }
+  }
+}
+</script>
