@@ -616,7 +616,9 @@ export default {
         let link = document.createElement('a')
         link.href = window.URL.createObjectURL(blob)
         link.download = `achizitii_companie_${this.$route.params.id}.csv`
+        document.body.appendChild(link)
         link.click()
+        link.remove()
       })
     },
     getAllTenders () {
@@ -626,7 +628,9 @@ export default {
         let link = document.createElement('a')
         link.href = window.URL.createObjectURL(blob)
         link.download = `licitatii_companie_${this.$route.params.id}.csv`
+        document.body.appendChild(link)
         link.click()
+        link.remove()
       })
     },
     getAllInstitutions () {
@@ -636,7 +640,9 @@ export default {
         let link = document.createElement('a')
         link.href = window.URL.createObjectURL(blob)
         link.download = `institutii_companie_${this.$route.params.id}.csv`
+        document.body.appendChild(link)
         link.click()
+        link.remove()
       })
     },
     getVolumeChart () {
@@ -648,7 +654,9 @@ export default {
         let link = document.createElement('a')
         link.href = window.URL.createObjectURL(blob)
         link.download = `histograma_companie_${this.$route.params.id}.csv`
+        document.body.appendChild(link)
         link.click()
+        link.remove()
       })
     },
     getCPVStats () {
@@ -660,7 +668,9 @@ export default {
         let link = document.createElement('a')
         link.href = window.URL.createObjectURL(blob)
         link.download = `cpv_companie_${this.$route.params.id}.csv`
+        document.body.appendChild(link)
         link.click()
+        link.remove()
       })
     },
     getGeoStats () {
@@ -672,7 +682,9 @@ export default {
         let link = document.createElement('a')
         link.href = window.URL.createObjectURL(blob)
         link.download = `geo_companie_${this.$route.params.id}.csv`
+        document.body.appendChild(link)
         link.click()
+        link.remove()
       })
     },
   },
