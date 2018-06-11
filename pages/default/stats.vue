@@ -6,13 +6,13 @@
         <b-table striped hover :items="stats.contracts" style="wdith: 100%;"
           :fields="[
             { key: 'title', label: 'Nume' },
-            { key: 'price_eur', label: 'Preț' },
+            { key: 'price_ron', label: 'Preț' },
             { key: 'contract_date', label: 'Dată' },
             { key: 'company', label: 'Companie' },
             { key: 'institution', label: 'Instituție' },
             { key: 'action', label: '' }
           ]">
-          <template slot="price_eur" slot-scope="data">{{ data.item.price_eur | currency('EUR') }}</template>
+          <template slot="price_ron" slot-scope="data">{{ data.item.price_ron | currency('RON') }}</template>
           <template slot="action" slot-scope="data">
             <b-btn size="sm" @click.stop="contractPop(data.item, $event.target)">Detalii</b-btn>
           </template>
@@ -23,13 +23,13 @@
         <b-table striped hover :items="stats.tenders" style="wdith: 100%;"
           :fields="[
             { key: 'title', label: 'Nume' },
-            { key: 'price_eur', label: 'Preț' },
+            { key: 'price_ron', label: 'Preț' },
             { key: 'contract_date', label: 'Dată' },
             { key: 'company', label: 'Companie' },
             { key: 'institution', label: 'Instituție' },
             { key: 'action', label: '' }
           ]">
-          <template slot="price_eur" slot-scope="data">{{ data.item.price_eur | currency('EUR') }}</template>
+          <template slot="price_ron" slot-scope="data">{{ data.item.price_ron | currency('RON') }}</template>
           <template slot="action" slot-scope="data">
             <b-btn size="sm" @click.stop="tenderPop(data.item, $event.target)">Detalii</b-btn>
           </template>
