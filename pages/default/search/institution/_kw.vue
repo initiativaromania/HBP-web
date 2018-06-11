@@ -25,7 +25,7 @@
           <col width="50px" />
         </template>
         <template slot="action" slot-scope="data">
-          <b-btn size="sm" :to="{name: 'default-institution-id', params: {id: data.item.InstitutiePublicaId}}">Detalii</b-btn>
+          <b-btn size="sm" :to="{name: 'default-institution-id', params: {id: data.item.id}}">Detalii</b-btn>
         </template>
       </b-table>
     </b-col></b-row>
