@@ -42,13 +42,20 @@
               </b-card>
             </b-col>
           </b-row>
+          <b-row><b-col><hr/></b-col></b-row>
+
           <b-row>
-            <b-col cols="2">
+            <b-col>
               Valoarea totală a achizițiilor publice contractate de la compania aleasă de tine, în intervalul de timp selectat
               <br/>
               Total: {{ volume_pie.reduce((sum, x) => sum + x[1], 0) | currency }}
             </b-col>
             <b-col cols="2">
+              <b-button variant="primary" @click="getVolumeChart()">Descarcă date</b-button>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col cols="4">
               <pie-chart :colors="['#b00', '#666']" :data="volume_pie" :donut="true" suffix=" RON"
                 thousands="." decimals="," title="Volum tranzacții"
                 :download="true" :library="chartOptions"/>
@@ -59,13 +66,20 @@
                 legend="bottom" title="Evoluție volum" :colors="['#b00', '#666']"/>
             </b-col>
           </b-row>
+          <b-row><b-col><hr/></b-col></b-row>
+
           <b-row>
-            <b-col cols="2">
+            <b-col>
               Numărul total de achiziții publice contractate de la compania aleasă de tine, în intervalul de timp selectat.
               <br/>
               Total: {{ count_pie.reduce((sum, x) => sum + x[1], 0) }}
             </b-col>
             <b-col cols="2">
+              <b-button variant="primary" @click="getVolumeChart()">Descarcă date</b-button>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col cols="4">
               <pie-chart :colors="['#b00', '#666']" :data="count_pie" :donut="true"
                 thousands="." title="Număr contracte"
                 :download="true" :library="chartOptions"/>
@@ -77,18 +91,30 @@
               <br/>
             </b-col>
           </b-row>
+          <b-row><b-col><hr/></b-col></b-row>
+
           <b-row>
-            <b-col cols="2">
+            <b-col>
               Află care este valoarea totală a achizițiilor publice în funcție de domeniul achiziției (<b>CPV</b>).
               Diagrama arată valoarea în funcție de intervalul de timp selectat de tine.
             </b-col>
-            <b-col cols="2">
+          </b-row>
+          <b-row>
+            <b-col cols="4">
               <pie-chart :data="cpv_pie" :donut="true" suffix=" RON"
                   thousands="." decimals="," title="Volum după CPV"
                   :download="true" :library="chartOptions" :legend="false"/>
             </b-col>
             <b-col cols="8">
               <highmaps :options="mapOptions" />
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col cols="4" class="text-center">
+              <b-button variant="primary" sm @click="getCPVStats()">Descarcă date</b-button>
+            </b-col>
+            <b-col cols="8" class="text-center">
+              <b-button variant="primary" sm @click="getGeoStats()">Descarcă date</b-button>
             </b-col>
           </b-row>
         </b-tab>
@@ -604,6 +630,42 @@ export default {
         let link = document.createElement('a')
         link.href = window.URL.createObjectURL(blob)
         link.download = `institutii_companie_${this.$route.params.id}.csv`
+        link.click()
+      })
+    },
+    getVolumeChart () {
+      var min = moment(this.dateParams[0], 'MM-YYYY').local().format('YYYY-MM-DD')
+      var max = moment(this.dateParams[1], 'MM-YYYY').local().format('YYYY-MM-DD')
+      let req = this.$axios.get(`company/${this.$route.params.id}/volume_chart.csv?start=${min}&end=${max}`)
+      req.then(response => {
+        let blob = new Blob([response.data], { type: 'application/csv' } )
+        let link = document.createElement('a')
+        link.href = window.URL.createObjectURL(blob)
+        link.download = `histograma_companie_${this.$route.params.id}.csv`
+        link.click()
+      })
+    },
+    getCPVStats () {
+      var min = moment(this.dateParams[0], 'MM-YYYY').local().format('YYYY-MM-DD')
+      var max = moment(this.dateParams[1], 'MM-YYYY').local().format('YYYY-MM-DD')
+      let req = this.$axios.get(`company/${this.$route.params.id}/cpv_stats.csv?start=${min}&end=${max}`)
+      req.then(response => {
+        let blob = new Blob([response.data], { type: 'application/csv' } )
+        let link = document.createElement('a')
+        link.href = window.URL.createObjectURL(blob)
+        link.download = `cpv_companie_${this.$route.params.id}.csv`
+        link.click()
+      })
+    },
+    getGeoStats () {
+      var min = moment(this.dateParams[0], 'MM-YYYY').local().format('YYYY-MM-DD')
+      var max = moment(this.dateParams[1], 'MM-YYYY').local().format('YYYY-MM-DD')
+      let req = this.$axios.get(`company/${this.$route.params.id}/geo_stats.csv?start=${min}&end=${max}`)
+      req.then(response => {
+        let blob = new Blob([response.data], { type: 'application/csv' } )
+        let link = document.createElement('a')
+        link.href = window.URL.createObjectURL(blob)
+        link.download = `geo_companie_${this.$route.params.id}.csv`
         link.click()
       })
     },
