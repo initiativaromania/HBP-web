@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <b-navbar toggleable="md" type="dark" variant="primary" :fixed="routeIsHome?'bottom':'top'" :sticky="false">
+    <b-navbar toggleable="md" type="dark" variant="primary" fixed="bottom" :sticky="false">
       <b-navbar-nav class="pl-5" />
       <b-navbar-brand :to="{path: '/'}"><img src="/logo_landscape.svg"
         height="60" alt="Harta Banilor Publici"/></b-navbar-brand>
@@ -15,7 +15,7 @@
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
-    <b-container fluid :style="{paddingBottom: routeIsHome? '100px' : 0, paddingTop: routeIsHome ? 0 : '100px' }">
+    <b-container fluid style="paddingBottom: 100px;">
       <b-row id="main" :no-gutters="true">
         <b-col><nuxt-child/></b-col>
       </b-row>
@@ -40,6 +40,7 @@ export default {
 
 #app > .container-fluid {
     padding: 0;
+    /* margin-bottom: 100px; */
     height: 100%;
     top: 0; bottom: 0;
 }
@@ -49,7 +50,7 @@ export default {
 }
 
 .navbar {
-  height: 100px;
+  min-height: 100px;
 }
 
 .navbar-brand {
