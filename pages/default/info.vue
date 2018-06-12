@@ -27,7 +27,7 @@
         <li>aplicații mobile Android şi iOS.</li>
       </ul>
 
-      <a href="https://itunes.apple.com/us/app/harta-banilor-publici/id1396034488" class="m-2" ><img src="/appstore.png" alt="Descarcă din Apple AppStore"></a>
+      <a href="https://itunes.apple.com/us/app/harta-banilor-publici/id1396034488" target="_blank" class="m-2" ><img src="/appstore.png" alt="Descarcă din Apple AppStore"></a>
       <a href="https://play.google.com/store/apps/details?id=initiativaromania.hartabanilorpublici" target="_blank" class="m-2" ><img src="/google-play.png" alt="Descarcă din Google Play"></a>
     </p>
 
