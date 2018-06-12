@@ -11,7 +11,9 @@
           <b-nav-item :to="{path: '/default/info'}">Info</b-nav-item>
           <b-nav-item :to="{path: '/default/stats'}">Statistici</b-nav-item>
           <b-nav-item :to="{path: '/default/team'}">Echipa</b-nav-item>
-          <b-nav-item href="#">Contact</b-nav-item>
+          <b-nav-item :to="{path: '/default/contact'}">Contact</b-nav-item>
+          <b-nav-item :to="{path: '/default/gdpr'}">GDPR</b-nav-item>
+          <b-nav-item href="https://www.initiativaromania.ro/harta_banilor_publici" target="_blank">Donează</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
