@@ -16,18 +16,6 @@
                   <p class="card-text">Această pagină îți oferă informații despre toate achizițiile publice contractate de
                     instituția publică aleasă de tine, în intervalul de timp selectat de tine (vezi mai jos).
                     <br/>
-                  <b>Instituția publică</b> - instituţie cu personalitate juridică, a administraţiei publice centrale, locale sau europene, care gestionează resurse financiare publice.
-                    <br/>
-                  <b>Achiziție directă</b> - achiziționarea de produse, servicii sau lucrări în măsura în care valoarea estimată a achiziției nu depășește echivalentul în lei a 15.000 Euro pentru fiecare achiziție de produse, servicii sau lucrări.
-                    <br/>
-                  Achiziția directă rămâne în exteriorul definiției propriu-zise a contractului de achiziție publică întrucât nu esste corelată cu o procedură de atribuire. Achiziția directă se realizează pe bază de document justificativ.
-
-                    <br/>
-                  <b>Licitația</b> - Procedura de licitație deschisă este reglementată de legea 98/2016. Este vorba de modul de realizare a achizițiilor publice și de organizare a concursurilor de soluții, instrumentele și tehnicile specifice care pot fi utilizate pentru atribuirea de contracte de achiziție publică, precum și anumite aspecte specific în legătură cu executarea contractelor de achiziție publică.
-                    <br/>
-                  <b>CPV</b> - Codul CPV stabileşte un singur sistem de clasificare pentru achiziţiile publice cu scopul de a standardiza referinţele utilizate de autorităţile şi entităţile contractante pentru a descrie obiectul contractelor de achiziţii publice.
-                  
-                    <br/>
                   Dacă dorești să faci propria analiză folosește butonul <b>Descarcă date</b> de lângă fiecare diagramă de pe pagină.
                     </p>
                 </b-card>
@@ -475,8 +463,8 @@ export default {
           isRowHeader: false,
           tdClass: 'titlu'
         },
-        { key: 'contract_count', label: 'Nr contracte', sortable: true },
-        { key: 'contract_total_ron', label: 'Total contracte', sortable: true },
+        { key: 'contract_count', label: 'Nr achiziții directe', sortable: true },
+        { key: 'contract_total_ron', label: 'Total achiziții directe', sortable: true },
         { key: 'tender_count', label: 'Nr licitații', sortable: true },
         { key: 'tender_total_ron', label: 'Total licitații', sortable: true },
         { key: 'action', label: '' }

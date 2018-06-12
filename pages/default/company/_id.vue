@@ -16,14 +16,6 @@
                   <p class="card-text">Această pagină îți oferă informații despre toate achizițiile publice contractate de
                     de la compania aleasă de tine, în intervalul de timp selectat de tine (vezi mai jos).
                     <br/>
-                  <b>Compania</b> este <i>(definiție TBA)</i>
-                    <br/>
-                  <b>Achizițiile directe</b> sunt <i>(definiție TBA)</i>
-                    <br/>
-                  <b>Licitațiile</b> sunt <i>(definiție TBA)</i>
-                    <br/>
-                  <b>CPV</b> este denumirea unică a <i>(definiție TBA)</i>
-                    <br/>
                   Dacă dorești să faci propria analiză folosește butonul <b>Descarcă date</b> de lângă fiecare diagramă de pe pagină.
                     </p>
                 </b-card>
@@ -433,7 +425,7 @@ function updateStats ({details, hist, cpv, map}) {
 
   vm.mapOptions = {
     chart: {borderWidth: 0},
-    title: {text: 'Volum contracte și licitații'},
+    title: {text: 'Volum achiziții directe și licitații'},
     legend: {enabled: true},
     series: [{
       name: 'Volum',
@@ -502,8 +494,8 @@ export default {
           isRowHeader: false,
           tdClass: 'titlu'
         },
-        { key: 'contract_count', label: 'Nr contracte', sortable: true },
-        { key: 'contract_total_ron', label: 'Total contracte', sortable: true },
+        { key: 'contract_count', label: 'Nr achiziții directe', sortable: true },
+        { key: 'contract_total_ron', label: 'Total achiziții dorecte', sortable: true },
         { key: 'tender_count', label: 'Nr licitații', sortable: true },
         { key: 'tender_total_ron', label: 'Total licitații', sortable: true },
         { key: 'action' }
