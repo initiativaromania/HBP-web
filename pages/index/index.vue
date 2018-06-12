@@ -281,6 +281,19 @@ export default {
         })
       }
     }
+  },
+  head: {
+    title: 'Harta Banilor Publici',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'Harta Banilor Publici', name: 'Harta Banilor Publici', content: 'Harta Banilor Publici' },
+      { property: 'og:image', content: 'https://www.hartabanilorpublici.ro/preview.jpg' },
+      { property: 'og:description', content: `Harta Banilor Publici vă permite să faceti propriiile voastre analize la nivel național privind cheltuirea banului public. Listează toate instituțiile publice din țară pe o hartă Google si permite accesarea tuturor contractelor pentru fiecare instituție. De asemenea, prin aplicație puteți să cautați companii, contracte sau instituții dupa nume și să listați topuri și statistici relevante:
+evoluţia numărului de contracte de achiziţii publice (licitaţii + achiziţii directe) per instituţie/companie;
+evoluţia valorii în RON a contractelor de achiziţie publică (licitaţii + achiziţii directe) per instituţie/companie
+posibilitatea de a filtra în funcţie de data achiziţiei publice (licitaţii+achiziţii directe), statistici legate de CPV.` }
+    ]
   }
 }
 </script>

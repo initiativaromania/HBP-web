@@ -9,8 +9,7 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'Harta Banilor Publici', name: 'Harta Banilor Publici', content: 'Harta Banilor Publici' },
-      { property: 'og:image', content: 'https://www.hartabanilorpublici.ro/logo_landscape.png' }
+      { hid: 'Harta Banilor Publici', name: 'Harta Banilor Publici', content: 'Harta Banilor Publici' }
     ],
     link: [
       { rel: 'icon', type: 'image/png', href: '/favicon.png' }
