@@ -59,7 +59,7 @@
                 :download="true" :library="chartOptions"/>
             </b-col>
             <b-col cols="7">
-              <line-chart :data="volume_hist" :discrete="false" xtitle="Dată" :download="true"
+              <line-chart :data="volume_hist" :discrete="false" xtitle="" :download="true"
                 suffix=" RON" thousands=" " decimals=","
                 legend="bottom" title="Evoluție volum" :colors="['#b00', '#666']"/>
             </b-col>
@@ -83,7 +83,7 @@
                 :download="true" :library="chartOptions"/>
             </b-col>
             <b-col>
-              <line-chart :data="count_hist" :discrete="false" xtitle="Dată" :download="true"
+              <line-chart :data="count_hist" :discrete="false" xtitle="" :download="true"
                 thousands=" " decimals=","
                 legend="bottom" title="Evoluție număr" :colors="['#b00', '#666']"/>
               <br/>
