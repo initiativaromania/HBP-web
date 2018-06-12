@@ -24,7 +24,7 @@
       </b-card>
     </b-col><b-col cols="12" sm="6" md="4" lg="3">
       <b-card img-src="/echipa-silviu-grijincu.jpg" img-top style="max-width: 15rem;"
-        title="Siviu Grijincu" sub-title="Software Engineer" class="mx-auto mb-3">
+        title="Silviu Grijincu" sub-title="Software Engineer" class="mx-auto mb-3">
         <p class="card-text">
           Dezvoltator al interfeței iOS a HBP
         </p>
