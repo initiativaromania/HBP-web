@@ -41,7 +41,7 @@ module.exports = {
               'vue-slider-component', 'chart.js', 'vue-chartkick', 'highcharts', 'vue-highcharts',
               'lodash', 
               '~/assets/js/romaniaMap.js', '~/assets/js/cvplegend.js',
-              '~/assets/js/gmapsPopup.js'
+              '~/assets/js/gmapsPopup.js', 'fontawesome', 'vue-analytics'
             ]
   },
 
@@ -50,7 +50,9 @@ module.exports = {
     ['@nuxtjs/axios'],
     ['@nuxtjs/dotenv'],
     ['nuxt-google-maps-module', { key: "AIzaSyA9NhBPMAbAkRR0_-yiO32gQr_vKUGqnsE", defer: false, async: false }],
-    '@nuxtjs/toast'
+    '@nuxtjs/toast',
+    '@nuxtjs/font-awesome',
+    '@nuxtjs/google-analytics'
   ],
 
   css: [
@@ -71,5 +73,9 @@ module.exports = {
   toast: {
     position: 'top-left',
     iconPack: 'fontawesome'
+  },
+
+  'google-analytics': {
+    id: 'UA-87530006-3'
   }
 }
