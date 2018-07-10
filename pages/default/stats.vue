@@ -97,7 +97,7 @@
         </b-row>
       </b-tab>
 
-     <b-tab title="Statistci globale">
+     <b-tab title="Statistici globale">
           <p class="card-text">
             <table class="table table-striped" style="wdith: 100%;">
               <thead>
